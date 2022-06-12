@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edit Page</title>
+  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+  <script src="form.js"></script>
+</head>
+<body>
+
+<div class="editpage" position="absolute">
+    <link rel="stylesheet" href="editpage.css">
+    <br><br><br>
+    <h1>Edit Data</h1>
+    <label for="trackTypee">Choose a race track:</label>
+        <br>
+        <select name="trackType" id="trackType" multiple>
+            <option value="Arad">Arad</option>
+            <option value="MotorCity">MotorCity</option>
+            <option value="Pezael">Pezael</option>
+        </select>
+        <br><br>
+        <input type="text" name="u" placeholder="Price" required="required" id="price"/>
+        <br><br>
+        <label for="Congestion">Congestion:</label>
+        <input type="text" name="u" placeholder="Morning" required="required" id="morning"/>
+        <input type="text" name="u" placeholder="Noon" required="required" id="noon"/>
+        <input type="text" name="u" placeholder="Evening" required="required" id="evening"/>
+        <br><br>
+        <button onclick="editData()" type="submit" id="editData" class="btn btn-primary btn-block btn-large">Edit</button>
+        <br><br>
+        <button onclick="moveToMap()" type="submit" id="signUp" class="btn btn-primary btn-block btn-large">Map</button>
+
+</div>
+</body>
+</html>

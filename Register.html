@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to InFormula 1 - Register</title>
+  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+    <script src="form.js"></script>
+</head>
+<body>
+
+<div class="register" position="absolute">
+    <link rel="stylesheet" href="register.css">
+    <br><br><br><br><br><br><br>
+    <h1>Registration</h1>
+    
+        <input type="text" name="u" placeholder="Name" required="required" id="name" />
+        <input type="text" name="u" placeholder="Family name" required="required" id="familyName"/>
+        <input type="email" name="u" placeholder="Email" required="required" id="email"/>
+        <input type="password" name="p" placeholder="Password" required="required" id="password" />
+        <br><br>
+        <button onclick="signUp()" type="submit" id="signUp" class="btn btn-primary btn-block btn-large">Register</button>
+        <br><br>
+        <button onclick="moveToLogin()" type="submit" id="moveToLogin" class="btn btn-primary btn-block btn-large">Login</button>
+
+</div>
+</body>
+</html>

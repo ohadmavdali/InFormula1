@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>InFormula 1 - Map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+  
+    <script>
+   
+  </script>
+    <div id="map"></div>
+    <script>
+    
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoidGFtYXppMTQ1MSIsImEiOiJja3N1NDQydmswZnEwMndzMnlvY3U0NnNwIn0.uIvF4ZndsllN1CpquYPJng';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            center: [35.166361, 31.256611], // starting position [lng, lat]
+            zoom: 6 // starting zoom
+        });
+        var firebaseConfig = {
+      apiKey: "AIzaSyCllYMiV9aj3HIMF18vk89IGIdCbPLHL_Y",
+      authDomain: "in-formula-1.firebaseapp.com",
+      databaseURL: "https://in-formula-1-default-rtdb.firebaseio.com",
+      projectId: "in-formula-1",
+      storageBucket: "in-formula-1.appspot.com",
+      messagingSenderId: "68140602458",
+      appId: "1:68140602458:web:72ce7bcf5ed39929a93463",
+      measurementId: "G-R6NZNG8F1X"
+    };
+  
+    
+    firebase.initializeApp(firebaseConfig);
+   
+    var dbRefArad = firebase.database().ref().child('Arad');
+	var dbRefMotorCity = firebase.database().ref().child('MotorCity');
+	var dbRefPezael = firebase.database().ref().child('Pezael');
+    dbRefArad.on('value', function(snap){
+        //var name = snap.child('Name').val();
+        var name = 'ערד'
+		var price = snap.child('Price').val();
+		var morning = snap.child('HoursMorning').val();
+		var noon = snap.child('HoursNoon').val();
+		var evening = snap.child('HoursEvening').val();
+	
+	const arr = ["שם: "+name, "מחיר: "+price,"שעות העומס בבוקר: "+morning,"שעות העומס בצהרים: "+noon,"שעות העומס בערב: "+evening];
+		
+        const marker1 = new mapboxgl.Marker()
+            .setLngLat([34.713602, 31.283871])
+            .setPopup(new mapboxgl.Popup().setHTML(arr[0]+"<br>"+arr[1]+"<br>"+arr[2]+"<br>"+arr[3]+"<br>"+arr[4]+"<br>"+'<img width="150" height="150" src="images/arad.png"/>')) // add popup
+            .addTo(map);
+    });
+
+	dbRefPezael.on('value', function(snap){
+        //var name = snap.child('Name').val();
+        var name = 'פצאל'
+		var price = snap.child('Price').val();
+		var morning = snap.child('HoursMorning').val();
+		var noon = snap.child('HoursNoon').val();
+		var evening = snap.child('HoursEvening').val();
+	
+	const arr = ["שם: "+name, "מחיר: "+price,"שעות העומס בבוקר: "+morning,"שעות העומס בצהרים: "+noon,"שעות העומס בערב: "+evening];
+        const marker2 = new mapboxgl.Marker()
+            .setLngLat([35.443323, 32.044009])
+            .setPopup(new mapboxgl.Popup().setHTML(arr[0]+"<br>"+arr[1]+"<br>"+arr[2]+"<br>"+arr[3]+"<br>"+arr[4]+"<br>"+'<img width="150" height="150" src="images/pezael.jpg"/>')) // add popup
+            .addTo(map);
+		});
+
+	dbRefMotorCity.on('value', function(snap){
+        //var name = snap.child('Name').val();
+        var name = 'מוטורסיטי באר שבע'
+		var price = snap.child('Price').val();
+		var morning = snap.child('HoursMorning').val();
+		var noon = snap.child('HoursNoon').val();
+		var evening = snap.child('HoursEvening').val();
+
+		const arr = ["שם: "+name, "מחיר: "+price,"שעות העומס בבוקר: "+morning,"שעות העומס בצהרים: "+noon,"שעות העומס בערב: "+evening];
+	
+        const marker3 = new mapboxgl.Marker()
+            .setLngLat([35.166361, 31.256611])
+            .setPopup(new mapboxgl.Popup().setHTML(arr[0]+"<br>"+arr[1]+"<br>"+arr[2]+"<br>"+arr[3]+"<br>"+arr[4]+"<br>"+'<img width="150" height="150" src="images/motorcity.png"/>')) // add popup
+            .addTo(map);
+		});
+            
+    </script>
+
+</body>
+
+</html>
